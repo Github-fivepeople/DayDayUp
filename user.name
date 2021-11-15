@@ -1,0 +1,17 @@
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=D:/software/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+winupdater.recentlyseenversion=2.27.0.windows.1
+user.name=Github-fivepeople
+user.email=2655809008@qq.com
+user.password=Github712729
+ssh.variant=ssh
