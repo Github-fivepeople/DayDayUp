@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        id : bean 的唯一标识符,也就是相当于我们学的对象名
+        class : bean 对象所对应的全限定名: 包名 + 类型
+        name : 也是别名, 而且name可以同时拥有多个别名, 分隔符可以是空格 逗号 分号
+        scope : singleton-单例模式  prototype-多例模式 request  session
+    -->
+
+    <bean id="student" class="com.xia.pojo.Student">
+        <!--第一种 普通值(常量)注入 value-->
+        <property name="name" value="小满"/>
+
+        <!--第二种 bean注入 ref引用-->
+        <property name="address" ref="address"/>
+
+        <!--第三种 数组注入 array-->
+        <property name="books">
+            <array>
+                <value>西游记</value>
+                <value>红楼梦</value>
+                <value>三国演义</value>
+                <value>水浒传</value>
+            </array>
+        </property>
+
+        <!--第四种 List注入 -->
+        <property name="hobby">
+            <list>
+                <value>唱</value>
+                <value>跳</value>
+                <value>rap</value>
+            </list>
+        </property>
+
+        <!--第五种 Map注入-->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="111122222223333"/>
+                <entry key="银行卡" value="444455555555666677889"/>
+            </map>
+        </property>
+
+        <!--第六种 Set注入-->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>PCL</value>
+                <value>刺客信条</value>
+            </set>
+        </property>
+
+        <!--空字符串 注入-->
+        <!--<property name="空字符串" value=""/>-->
+
+        <!--properties 注入-->
+        <property name="info">
+            <props>
+                <prop key="studentno">22</prop>
+                <prop key="gender">男</prop>
+                <prop key="username">姓名</prop>
+                <prop key="password">12121</prop>
+            </props>
+        </property>
+
+        <!--null值 注入-->
+        <property name="wife">
+            <null></null>
+        </property>
+    </bean>
+
+    <!--bean注入 就是注入另一个java类 需要使用ref引用-->
+    <bean id="address" class="com.xia.pojo.Address">
+        <property name="address" value="上海市"/>
+    </bean>
+
+</beans>
+
+        <!-- PS:在配置文件被加载的时候,容器中管理的对象就已经初始化了 -->

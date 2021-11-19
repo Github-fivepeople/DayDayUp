@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--xmlns:p="http://www.springframework.org/schema/p"     P命名空间 : 添加约束-->
+
+    <!--
+        id : bean 的唯一标识符,也就是相当于我们学的对象名
+        class : bean 对象所对应的全限定名: 包名 + 类型
+        name : 也是别名, 而且name可以同时拥有多个别名, 分隔符可以是空格 逗号 分号
+        scope : singleton-单例模式  prototype-多例模式 request  session
+    -->
+    <bean id="cat" class="com.xia.pojo.autowired.Cat"/>
+
+    <bean id="dog" class="com.xia.pojo.autowired.Dog"/>
+
+    <!--这一步就是之前学的 SpringBean的显示装配,需要人手动注入-->
+    <bean id="people" class="com.xia.pojo.autowired.People">
+        <property name="name" value="小满"/>
+        <property name="cat" ref="cat"/>
+        <property name="dog" ref="dog"/>
+    </bean>
+
+    <!--autowire 自动装配Bean(自己去People类中寻找需要用到的Bean来加载) 等价于上面的-->
+    <!--
+        byName: 会自动在Spring上下文中寻找和自己对象set方法后面相同命名的bean, 并将其自动加载到对象当中  主要看name="dog" / id="dog"
+        需要保证所有bean的 id 唯一, 并且这个bean的name 需要和 自动注入的属性的set方法的值一致
+        <property name="dog" ref="dog"/>  有效
+        <property name="dog1234" ref="dog"/> 无效
+    -->
+    <bean id="people2" class="com.xia.pojo.autowired.People" autowire="byName">
+        <property name="name" value="小满"/>
+    </bean>
+
+    <!--
+        byType: 会自动在Spring上下文中寻找和自己对象属性类型相同的bean, 并将其自动加载到对象当中 主要是看 ref="dog" / class="com.xia.pojo.autowired.Dog"
+        需要保证所有bean的 class 唯一, 并且这个bean 需要和 自动注入的属性的类型一致
+        <property name="dog" ref="dog"/> 有效
+        <property name="dog1234" ref="dog"/> 也有效
+        但是不能两个同时存在
+    -->
+    <bean id="people3" class="com.xia.pojo.autowired.People" autowire="byType">
+        <property name="name" value="小满"/>
+    </bean>
+
+</beans>
+
+        <!-- PS:在配置文件被加载的时候,容器中管理的对象就已经初始化了 -->

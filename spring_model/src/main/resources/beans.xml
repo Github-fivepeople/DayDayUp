@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--    set注入 即通过get/set方法注入-->
+    <!--<bean id="hello" class="com.xia.pojo.Hello">       &lt;!&ndash;这里的创建bean id值随意起名字，但一个spring的id不能出现多个，为唯一值 &ndash;&gt;
+        &lt;!&ndash;创建bean想当于new 对象&ndash;&gt;
+        <property name="str" value="我是通过property创建的Spring"></property>  &lt;!&ndash;这里是name就是实体类的属性值，要于属性值一致 value则就是给id赋值&ndash;&gt;
+        &lt;!&ndash;<property name="age" value="18"></property>   &lt;!&ndash;想当于 setAge(18)&ndash;&gt;
+        <property name="name" value="魏无羡"></property>
+        <property name="height" value="180"></property>&ndash;&gt;
+    </bean>-->
+    <!--set注入完成-->
+
+    <!--下标赋值(需要有参构造)-->
+    <bean id="hello" class="com.xia.pojo.Hello">
+        <constructor-arg index="0" value="我是通过constructor-index创建的Spring"/>
+    </bean>
+
+    <bean id="hello2" class="com.xia.pojo.Hello">
+        <constructor-arg index="0" value="我是通过constructor-index创建的Spring"/>
+    </bean>
+
+
+    <!--类型赋值(需要有参构造)-->
+    <bean id="hello3" class="com.xia.pojo.Hello">
+        <constructor-arg type="java.lang.String" value="通过类型赋值Bean"/>
+    </bean>
+
+    <!--constructor-arg name - 参数名赋值bean (需要有参构造)-->
+    <bean id="hello4" class="com.xia.pojo.Hello">
+        <constructor-arg name="str" value="constructor-arg name赋值bean"/>
+    </bean>
+
+    <bean id="helloT" class="com.xia.pojo.HelloT">
+        <constructor-arg name="name" value="Love you"/>
+    </bean>
+
+
+
+    <!--构造方法注入-->
+    <!--通过有参构造函数对属性进行赋值-->
+    <!--同一个类可以创建多个bean-->
+    <!--构造方法不在是property了而是constructor-arg看得懂英文的都知道扫描意思了-->
+    <!--<bean id="Stu2" class="entity.Student">-->
+        <!--<constructor-arg name="id" value="12"></constructor-arg>-->
+        <!--<constructor-arg name="age" value="20"></constructor-arg>-->
+        <!--<constructor-arg name="name" value="蓝湛"></constructor-arg>-->
+        <!--<constructor-arg name="height" value="190"></constructor-arg>-->
+    <!--</bean>-->
+    <!--构造方法注入完成，去Test类找蓝湛-->
+
+
+    <!--bean文件的ref映射，即创建对象时，把其他对象一起创建，前提是这个对象是他本身的属性-->
+    <!--并通过构造方法进行实例 通过构造方法进行注入-->
+    <!--<bean id="StuService" class="service.StudentService">-->
+        <!--<constructor-arg name="student" ref="Stu"></constructor-arg>-->
+        <!--<constructor-arg name="student2" ref="Stu2"></constructor-arg>-->
+    <!--</bean>-->
+    <!--ref映射到的就是bean的id值,就相当于和bean中的对象进行实例化了，并拥有他的属性-->
+
+</beans>
+
+<!-- PS:在配置文件被加载的时候,容器中管理的对象就已经初始化了 -->

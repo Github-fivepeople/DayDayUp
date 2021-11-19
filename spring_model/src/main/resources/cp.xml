@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--xmlns:p="http://www.springframework.org/schema/p"     P命名空间 : 添加约束-->
+
+    <!--
+        id : bean 的唯一标识符,也就是相当于我们学的对象名
+        class : bean 对象所对应的全限定名: 包名 + 类型
+        name : 也是别名, 而且name可以同时拥有多个别名, 分隔符可以是空格 逗号 分号
+        scope : singleton-单例模式  prototype-多例模式 request  session
+    -->
+
+    <!--P命名空间: 可以直接注入属性值  需要无参构造-->
+    <bean id="cp" class="com.xia.pojo.CP" p:name="大暑" p:age="24"/>
+
+    <!--C命名空间: 可以直接注入属性值  需要有参构造-->
+    <bean id="cp2" class="com.xia.pojo.CP" c:age="24" c:name="dashu"/>
+
+</beans>
+
+        <!-- PS:在配置文件被加载的时候,容器中管理的对象就已经初始化了 -->

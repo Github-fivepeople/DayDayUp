@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        id : bean 的唯一标识符,也就是相当于我们学的对象名
+        class : bean 对象所对应的全限定名: 包名 + 类型
+        name : 也是别名, 而且name可以同时拥有多个别名, 分隔符可以是空格 逗号 分号
+        scope : singleton-单例模式  prototype-多例模式 request  session
+    -->
+    <bean id="hello" class="com.xia.pojo.HelloT" name="A B,C;D" scope="singleton">
+        <constructor-arg name="name" value="HelloT的实例化Bean"/>
+    </bean>
+
+    <alias name="hello" alias="T"/>  <!--alias就是别名-->
+
+    <!--import 一般用于团队开发, 可以将多哥配置文件,导入合并为一个-->
+    <!--不同的人开发不同的类, 需要配置注册不同的beans配置文件,可以利用import合并成一个总配置文件-->
+    <!--不同配置文件中 id相同会覆盖-->
+    <import resource="beans.xml"/>
+    <import resource="beansconfig.xml"/>
+
+</beans>
+
+        <!-- PS:在配置文件被加载的时候,容器中管理的对象就已经初始化了 -->

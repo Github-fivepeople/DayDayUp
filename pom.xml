@@ -6,7 +6,11 @@
 
     <groupId>com.liao.study</groupId>
     <artifactId>XXYY</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spring_model</module>
+    </modules>
 
 
 </project>
