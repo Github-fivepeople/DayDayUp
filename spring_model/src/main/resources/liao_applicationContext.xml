@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--xmlns:p="http://www.springframework.org/schema/p"     P命名空间 : 添加约束-->
+
+    <!--
+        id : bean 的唯一标识符,也就是相当于我们学的对象名
+        class : bean 对象所对应的全限定名: 包名 + 类型
+        name : 也是别名, 而且name可以同时拥有多个别名, 分隔符可以是空格 逗号 分号
+        scope : singleton-单例模式  prototype-多例模式 request  session
+    -->
+
+    <!--支持注解的声明 不配置的话 会 Exception in thread "main" java.lang.NullPointerException-->
+    <context:component-scan base-package="liao.myspring.pojo"/>
+    <context:annotation-config/>
+
+    <!--没有注解前需要这样-->
+    <!--<bean id="user" class="liao.myspring.pojo.User"/> -->
+</beans>

@@ -1,0 +1,7 @@
+Spring说明
+    小结:
+        @Resource 和 @Autowired 的区别
+        1.都是用来自动装配的,都可以放在属性字段上
+        2.@Autowired 通过byType的方式实现,而且必须要求这个对象存放! [常用]
+        3.@Resource 默认通过byName的方式实现,如果找不到名字,则通过byType实现,如果两个都找不到的情况下,就会报错! [常用]
+        4.执行顺序不同: @Autowired 通过byType的方式实现 , @Resource 默认通过byName的方式实现

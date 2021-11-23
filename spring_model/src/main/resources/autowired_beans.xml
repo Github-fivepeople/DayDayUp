@@ -33,7 +33,7 @@
         <property name="dog1234" ref="dog"/> 无效
     -->
     <bean id="people2" class="com.xia.pojo.autowired.People" autowire="byName">
-        <property name="name" value="小满"/>
+        <property name="name" value="小满byName"/>
     </bean>
 
     <!--
@@ -44,7 +44,7 @@
         但是不能两个同时存在
     -->
     <bean id="people3" class="com.xia.pojo.autowired.People" autowire="byType">
-        <property name="name" value="小满"/>
+        <property name="name" value="小满byType"/>
     </bean>
 
 </beans>
